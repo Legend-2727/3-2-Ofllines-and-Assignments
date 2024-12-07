@@ -1,0 +1,84 @@
+File,Method,Method_Time (ms),Method_Cost,Method_Deviation (%),Method + 2-opt Time (ms),Method + 2-opt Cost,Method + 2-opt Deviation (%),Method + Node Shift Time (ms),Method + Node Shift Cost,Method + Node Shift Deviation (%),Method + Node Swap Time (ms),Method + Node Swap Cost,Method + Node Swap Deviation (%),Bound
+../tsp_files/berlin52.tsp,Cheapest Insertion,20,9042,3.15,50,8759,0.56,167,8336,4.17,77,8954,2.21,8700
+../tsp_files/berlin52.tsp,Nearest Neighbour Heuristic,0,8980,3.22,38,8056,7.41,218,8320,4.37,84,8667,0.38,8700
+../tsp_files/berlin52.tsp,Greedy Heuristic,1,9954,14.41,45,8010,7.93,145,8211,5.63,85,9227,6.06,8700
+,,,,,,,,,,,,,,
+../tsp_files/bier127.tsp,Cheapest Insertion,295,139192,2.88,632,136523,0.52,2009,132885,2.6,1140,137324,0.15,136000
+../tsp_files/bier127.tsp,Nearest Neighbour Heuristic,4,135751,0.18,662,124973,7.37,3017,124005,8.82,854,128779,5.3,136000
+../tsp_files/bier127.tsp,Greedy Heuristic,5,141351,3.93,556,125503,7.72,3012,124564,8.41,2981,131805,3.08,136000
+,,,,,,,,,,,,,,
+../tsp_files/ch130.tsp,Cheapest Insertion,320,7278,6,784,6800,0,2591,6706,1.38,2122,6882,1.2,6800
+../tsp_files/ch130.tsp,Nearest Neighbour Heuristic,4,7575,11.4,587,6626,2.56,2279,6971,2.5,1353,7399,8.82,6800
+../tsp_files/ch130.tsp,Greedy Heuristic,4,7844,15.38,586,6561,3.51,2271,6960,2.35,1356,7684,13,6800
+,,,,,,,,,,,,,,
+../tsp_files/eil51.tsp,Cheapest Insertion,17,481,2.34,31,470,0,96,440,6.38,70,474,0.85,470
+../tsp_files/eil51.tsp,Nearest Neighbour Heuristic,0,513,9.15,28,440,0,106,448,1.82,54,482,2.55,470
+../tsp_files/eil51.tsp,Greedy Heuristic,0,481,2.34,20,447,0.64,107,456,1.7,105,467,2.13,470
+,,,,,,,,,,,,,,
+../tsp_files/eil76.tsp,Cheapest Insertion,59,612,3.77,174,590,1.03,328,584,0.34,325,605,2.54,582
+../tsp_files/eil76.tsp,Nearest Neighbour Heuristic,2,711,22.17,118,593,1.89,363,575,1.2,358,621,6.7,582
+../tsp_files/eil76.tsp,Greedy Heuristic,2,617,5,71,572,1.72,365,584,0.34,180,601,3.26,582
+,,,,,,,,,,,,,,
+../tsp_files/eil101.tsp,Cheapest Insertion,148,708,4.54,371,684,1.03,780,669,0,980,687,2.69,669
+../tsp_files/eil101.tsp,Nearest Neighbour Heuristic,2,825,23.32,323,677,1.2,834,727,8.67,412,729,8.97,669
+../tsp_files/eil101.tsp,Greedy Heuristic,3,794,18.71,272,677,1.2,1046,672,0.45,620,712,6.43,669
+,,,,,,,,,,,,,,
+../tsp_files/kroA100.tsp,Cheapest Insertion,141,25232,4.18,353,24219,0.91,967,23927,0,756,24403,1.99,23927
+../tsp_files/kroA100.tsp,Nearest Neighbour Heuristic,2,26856,12.21,214,22831,4.83,837,23647,0.75,820,24574,2.7,23927
+../tsp_files/kroA100.tsp,Greedy Heuristic,3,24197,1.13,215,22209,7.19,1035,22175,7.31,411,22624,5.51,23927
+,,,,,,,,,,,,,,
+../tsp_files/kroB100.tsp,Cheapest Insertion,142,25259,5.67,302,24073,0.86,760,24382,1.53,550,24989,4.11,24073
+../tsp_files/kroB100.tsp,Nearest Neighbour Heuristic,1,29155,21.08,425,23173,3.74,1672,25242,4.83,412,28594,18.81,24073
+../tsp_files/kroB100.tsp,Greedy Heuristic,2,25815,7.21,268,22787,5.37,1037,23211,3.87,617,24976,3.74,24073
+,,,,,,,,,,,,,,
+../tsp_files/kroC100.tsp,Cheapest Insertion,140,25545,10.39,413,24747,2.33,1393,22911,7.34,548,25007,8.58,22911
+../tsp_files/kroC100.tsp,Nearest Neighbour Heuristic,3,26327,14.93,214,22533,1.37,831,24044,4.93,615,25660,12.03,22911
+../tsp_files/kroC100.tsp,Greedy Heuristic,3,23432,2.27,161,21549,5.93,621,22356,2.45,410,22672,3.32,22911
+,,,,,,,,,,,,,,
+../tsp_files/kroD100.tsp,Cheapest Insertion,138,25684,7.59,297,23875,0.64,964,23292,2.7,551,25298,6.47,23875
+../tsp_files/kroD100.tsp,Nearest Neighbour Heuristic,2,26950,12.85,213,22718,4.85,1240,24468,2.48,611,26580,11.31,23875
+../tsp_files/kroD100.tsp,Greedy Heuristic,2,24450,2.41,160,22718,4.85,835,22979,3.76,614,23701,0.73,23875
+,,,,,,,,,,,,,,
+../tsp_files/kroE100.tsp,Cheapest Insertion,140,25529,0.63,301,25367,0,966,23821,6.09,550,25367,0,25367
+../tsp_files/kroE100.tsp,Nearest Neighbour Heuristic,2,27587,8.76,268,24287,4.24,828,25422,0.22,817,26081,2.81,25367
+../tsp_files/kroE100.tsp,Greedy Heuristic,2,24847,2.05,215,22819,10.06,1251,22725,10.42,410,23643,6.81,25367
+,,,,,,,,,,,,,,
+../tsp_files/lin105.tsp,Cheapest Insertion,162,16910,5.47,480,16035,0.8,1409,15907,0,654,16514,3.82,15907
+../tsp_files/lin105.tsp,Nearest Neighbour Heuristic,2,20362,28.02,320,16199,1.83,1246,18379,15.52,496,19635,23.46,15907
+../tsp_files/lin105.tsp,Greedy Heuristic,4,16771,5.43,258,14873,6.5,997,14959,5.96,495,16581,4.23,15907
+,,,,,,,,,,,,,,
+../tsp_files/pr76.tsp,Cheapest Insertion,59,125936,6.92,177,120233,2.07,426,117798,0,331,120442,2.24,117798
+../tsp_files/pr76.tsp,Nearest Neighbour Heuristic,2,153461,30.2,96,115781,1.69,556,133922,13.68,274,119784,1.68,117798
+../tsp_files/pr76.tsp,Greedy Heuristic,1,147497,25.19,118,124561,5.73,560,134256,13.96,276,144304,22.45,117798
+,,,,,,,,,,,,,,
+../tsp_files/pr124.tsp,Cheapest Insertion,269,65318,5.61,591,62237,0.65,1520,61832,0,1093,63935,3.41,61832
+../tsp_files/pr124.tsp,Nearest Neighbour Heuristic,3,69299,12.09,748,60665,1.89,1257,64381,4.12,1244,65186,5.43,61832
+../tsp_files/pr124.tsp,Greedy Heuristic,5,64997,5.12,433,60437,2.26,2523,61922,0.15,832,64231,3.89,61832
+,,,,,,,,,,,,,,
+../tsp_files/pr144.tsp,Cheapest Insertion,428,73033,1.46,1104,59974,1.66,3728,72116,0.11,1739,72562,0.62,72116
+../tsp_files/pr144.tsp,Nearest Neighbour Heuristic,4,61650,0.92,511,61243,1.21,3310,61012,1.53,1319,61419,0.96,61012
+../tsp_files/pr144.tsp,Greedy Heuristic,6,65845,7.38,514,60425,0.97,1988,63234,3.65,1316,65726,7.74,61012
+,,,,,,,,,,,,,,
+../tsp_files/rat99.tsp,Cheapest Insertion,135,1505,7.04,391,1400,1.21,1331,1269,0,726,1414,1.18,1269
+../tsp_files/rat99.tsp,Nearest Neighbour Heuristic,3,1564,23.26,258,1298,2.28,1003,1362,7.34,792,1418,11.74,1269
+../tsp_files/rat99.tsp,Greedy Heuristic,3,1481,16.71,207,1267,0.16,1204,1326,4.49,598,1327,4.58,1269
+,,,,,,,,,,,,,,
+../tsp_files/st70.tsp,Cheapest Insertion,46,740,4.35,99,709,0.7,256,710,0.84,254,718,1.26,709
+../tsp_files/st70.tsp,Nearest Neighbour Heuristic,0,805,13.55,54,727,2.54,210,750,5.78,137,776,9.45,709
+../tsp_files/st70.tsp,Greedy Heuristic,1,746,5.22,73,710,0.14,212,711,0.28,138,718,1.27,709
+,,,,,,,,,,,,,,
+../tsp_files/lin318.tsp,Cheapest Insertion,5052,49430,6.81,14030,46053,1.5,40044,46502,2.47,19093,48296,6.21,46053
+../tsp_files/lin318.tsp,Nearest Neighbour Heuristic,25,54033,17.34,10732,45318,1.59,48820,49528,7.55,20940,53280,15.71,46053
+../tsp_files/lin318.tsp,Greedy Heuristic,36,49910,8.38,10713,43945,4.58,41917,44969,2.33,20916,48458,5.22,46053
+,,,,,,,,,,,,,,
+../tsp_files/a280.tsp,Cheapest Insertion,3392,3065,6.46,8356,2848,0.56,32866,2768,3.8,13086,2982,4.46,2768
+../tsp_files/a280.tsp,Nearest Neighbour Heuristic,18,3148,13.72,6281,2813,1.63,34334,2889,4.37,9820,3100,11.98,2768
+../tsp_files/a280.tsp,Greedy Heuristic,27,2960,6.93,7595,2690,2.82,24695,2789,0.76,9808,2911,5.16,2768
+,,,,,,,,,,,,,,
+../tsp_files/ch150.tsp,Cheapest Insertion,488,7850,8.97,1211,7183,2,4015,7044,0.44,1877,7384,4.84,7044
+../tsp_files/ch150.tsp,Nearest Neighbour Heuristic,6,8194,16.35,1620,6730,4.46,6353,7328,4.03,1391,8119,15.3,7044
+../tsp_files/ch150.tsp,Greedy Heuristic,8,7743,9.93,912,6926,1.67,4240,7103,0.84,1399,7626,8.26,7044
+,,,,,,,,,,,,,,
+../tsp_files/rat195.tsp,Cheapest Insertion,1102,2779,6.68,2676,2605,2.72,10284,2536,0,5676,2665,5.09,2536
+../tsp_files/rat195.tsp,Nearest Neighbour Heuristic,9,2761,8.89,2393,2489,0.99,9260,2528,0.32,6133,2673,5.41,2536
+../tsp_files/rat195.tsp,Greedy Heuristic,13,2758,8.76,1187,2480,2.21,10793,2510,1.46,3074,2726,7.5,2536

@@ -1,0 +1,673 @@
+Request: GET / HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in root</h1><ul><li><a href="/1"><b><i>1</i></b></a></li><li><a href="/1717308349834.jpg">1717308349834.jpg</a></li><li><a href="/1t.txt">1t.txt</a></li><li><a href="/2"><b><i>2</i></b></a></li><li><a href="/new.txt">new.txt</a></li></ul></body></html>
+--------------------
+Request: GET /1 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 1</h1><ul><li><a href="/1/23.jpg">23.jpg</a></li><li><a href="/1/3"><b><i>3</i></b></a></li></ul></body></html>
+--------------------
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+--------------------
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+--------------------
+Request: GET /1/3/new.txt HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/plain
+
+
+--------------------
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+--------------------
+Request: GET /1717308349834.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+--------------------
+Request: GET /1/3/new.txt HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/plain
+
+
+--------------------
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+--------------------
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+--------------------
+Request: GET /1/3/new.txt HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/plain
+
+
+--------------------
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+--------------------
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+--------------------
+Request: GET / HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in root</h1><ul><li><a href="/1"><b><i>1</i></b></a></li><li><a href="/1717308349834.jpg">1717308349834.jpg</a></li><li><a href="/1t.txt">1t.txt</a></li><li><a href="/2"><b><i>2</i></b></a></li><li><a href="/new.txt">new.txt</a></li></ul></body></html>
+--------------------
+Request: GET /1717308349834.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+--------------------
+Request: GET /1t.txt HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/plain
+
+
+--------------------
+Request: GET /2 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 2</h1><ul></ul></body></html>
+--------------------
+Request: GET /new.txt HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/plain
+
+
+--------------------
+Request: GET /4 HTTP/1.1
+Response: HTTP/1.0 404 Not Found
+
+
+--------------------
+1.
+
+Request: GET / HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in root</h1><ul><li><a href="/1"><b><i>1</i></b></a></li><li><a href="/1t.txt">1t.txt</a></li><li><a href="/2"><b><i>2</i></b></a></li><li><a href="/3.jpg">3.jpg</a></li><li><a href="/new.txt">new.txt</a></li><li><a href="/uploadedFiles"><b><i>uploadedFiles</i></b></a></li></ul></body></html>
+2.
+
+Request: GET /4 HTTP/1.1
+Response: HTTP/1.0 404 Not Found
+
+
+3.
+
+Request: GET / HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in root</h1><ul><li><a href="/1"><b><i>1</i></b></a></li><li><a href="/1t.txt">1t.txt</a></li><li><a href="/2"><b><i>2</i></b></a></li><li><a href="/3.jpg">3.jpg</a></li><li><a href="/new.txt">new.txt</a></li><li><a href="/uploadedFiles"><b><i>uploadedFiles</i></b></a></li></ul></body></html>
+4.
+
+Request: GET /4 HTTP/1.1
+Response: HTTP/1.0 404 Not Found
+
+
+5.
+
+Request: GET / HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in root</h1><ul><li><a href="/1"><b><i>1</i></b></a></li><li><a href="/1t.txt">1t.txt</a></li><li><a href="/2"><b><i>2</i></b></a></li><li><a href="/3.jpg">3.jpg</a></li><li><a href="/new.txt">new.txt</a></li><li><a href="/uploadedFiles"><b><i>uploadedFiles</i></b></a></li></ul></body></html>
+6.
+
+Request: GET /new.txt HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/plain
+
+
+7.
+
+Request: GET /3.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+8.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul></ul></body></html>
+9.
+
+Request: GET /1t.txt HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/plain
+
+
+10.
+
+Request: GET /1 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 1</h1><ul><li><a href="/1/23.jpg">23.jpg</a></li><li><a href="/1/3"><b><i>3</i></b></a></li></ul></body></html>
+11.
+
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+12.
+
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+13.
+
+Request: GET /1/3/new.txt HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/plain
+
+
+14.
+
+Request: GET /3.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+15.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li></ul></body></html>
+16.
+
+Request: GET /uploadedFiles/3.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+17.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li></ul></body></html>
+18.
+
+Request: GET /uploadedFiles/3.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+19.
+
+Request: GET /1 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 1</h1><ul><li><a href="/1/23.jpg">23.jpg</a></li><li><a href="/1/3"><b><i>3</i></b></a></li></ul></body></html>
+20.
+
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+21.
+
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+22.
+
+Request: GET /1/3/new.txt HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/plain
+
+
+23.
+
+Request: GET /2 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 2</h1><ul></ul></body></html>
+24.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li></ul></body></html>
+25.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+26.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+27.
+
+Request: GET /uploadedFiles/4.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+1.
+
+Request: GET / HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in root</h1><ul><li><a href="/1"><b><i>1</i></b></a></li><li><a href="/1t.txt">1t.txt</a></li><li><a href="/2"><b><i>2</i></b></a></li><li><a href="/3.jpg">3.jpg</a></li><li><a href="/new.txt">new.txt</a></li><li><a href="/uploadedFiles"><b><i>uploadedFiles</i></b></a></li></ul></body></html>
+2.
+
+Request: GET /favicon.ico HTTP/1.1
+Response: HTTP/1.0 404 Not Found
+
+
+3.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+4.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+5.
+
+Request: GET /uploadedFiles/4.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+6.
+
+Request: GET /uploadedFiles/3.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+7.
+
+Request: GET /1 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 1</h1><ul><li><a href="/1/23.jpg">23.jpg</a></li><li><a href="/1/3"><b><i>3</i></b></a></li></ul></body></html>
+8.
+
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: image/jpeg
+
+
+9.
+
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/ArrayBasedOffline1.cpp">ArrayBasedOffline1.cpp</a></li><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+10.
+
+Request: GET /1/3/new.txt HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/plain
+
+
+11.
+
+Request: GET /1/3/ArrayBasedOffline1.cpp HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: application/octet-stream
+
+
+12.
+
+Request: GET /1/3/ArrayBasedOffline1.cpp HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: application/octet-stream
+
+
+13.
+
+Request: GET /1/3/ArrayBasedOffline1.cpp HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: application/octet-stream
+
+
+14.
+
+Request: GET /1/3/ArrayBasedOffline1.cpp HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: application/octet-stream
+
+
+1.
+
+Request: GET / HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in root</h1><ul><li><a href="/1"><b><i>1</i></b></a></li><li><a href="/1t.txt">1t.txt</a></li><li><a href="/2"><b><i>2</i></b></a></li><li><a href="/3.jpg">3.jpg</a></li><li><a href="/new.txt">new.txt</a></li><li><a href="/uploadedFiles"><b><i>uploadedFiles</i></b></a></li></ul></body></html>
+2.
+
+Request: GET /1 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 1</h1><ul><li><a href="/1/23.jpg">23.jpg</a></li><li><a href="/1/3"><b><i>3</i></b></a></li></ul></body></html>
+3.
+
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: image/jpeg
+
+
+4.
+
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/ArrayBasedOffline1.cpp">ArrayBasedOffline1.cpp</a></li><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+5.
+
+Request: GET /1/3/new.txt HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: text/plain
+
+
+6.
+
+Request: GET /1/3/ArrayBasedOffline1.cpp HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename="ArrayBasedOffline1.cpp"
+
+
+1.
+
+Request: GET / HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in root</h1><ul><li><a href="/1"><b><i>1</i></b></a></li><li><a href="/1t.txt">1t.txt</a></li><li><a href="/2"><b><i>2</i></b></a></li><li><a href="/new.txt">new.txt</a></li><li><a href="/uploadedFiles"><b><i>uploadedFiles</i></b></a></li></ul></body></html>
+2.
+
+Request: GET /1 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 1</h1><ul><li><a href="/1/23.jpg">23.jpg</a></li><li><a href="/1/3"><b><i>3</i></b></a></li></ul></body></html>
+3.
+
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: image/jpeg
+
+
+4.
+
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/ArrayBasedOffline1.cpp">ArrayBasedOffline1.cpp</a></li><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+5.
+
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/ArrayBasedOffline1.cpp">ArrayBasedOffline1.cpp</a></li><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+6.
+
+Request: GET /1/3/ArrayBasedOffline1.cpp HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename="ArrayBasedOffline1.cpp"
+
+
+7.
+
+Request: GET /1/3/new.txt HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: text/plain
+
+
+8.
+
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/ArrayBasedOffline1.cpp">ArrayBasedOffline1.cpp</a></li><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+9.
+
+Request: GET /1t.txt HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: text/plain
+
+
+10.
+
+Request: GET /2 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 2</h1><ul></ul></body></html>
+11.
+
+Request: GET /new.txt HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: text/plain
+
+
+12.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+13.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+14.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+15.
+
+Request: GET /uploadedFiles/4.jpg HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: image/jpeg
+
+
+16.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+17.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+18.
+
+Request: GET /uploadedFiles/3.jpg HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: image/jpeg
+
+
+1.
+
+Request: GET / HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in root</h1><ul><li><a href="/1"><b><i>1</i></b></a></li><li><a href="/1t.txt">1t.txt</a></li><li><a href="/2"><b><i>2</i></b></a></li><li><a href="/new.txt">new.txt</a></li><li><a href="/uploadedFiles"><b><i>uploadedFiles</i></b></a></li></ul></body></html>
+2.
+
+Request: GET /1 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 1</h1><ul><li><a href="/1/23.jpg">23.jpg</a></li><li><a href="/1/3"><b><i>3</i></b></a></li></ul></body></html>
+3.
+
+Request: GET /1/23.jpg HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: image/jpeg
+
+
+4.
+
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/ArrayBasedOffline1.cpp">ArrayBasedOffline1.cpp</a></li><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+5.
+
+Request: GET /1/3/ArrayBasedOffline1.cpp HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename="ArrayBasedOffline1.cpp"
+
+
+6.
+
+Request: GET /1/3 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 3</h1><ul><li><a href="/1/3/ArrayBasedOffline1.cpp">ArrayBasedOffline1.cpp</a></li><li><a href="/1/3/new.txt">new.txt</a></li></ul></body></html>
+7.
+
+Request: GET /1/3/new.txt HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: text/plain
+
+
+8.
+
+Request: GET /new.txt HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: text/plain
+
+
+9.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+10.
+
+Request: GET /2 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 2</h1><ul></ul></body></html>
+11.
+
+Request: GET /1t.txt HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: text/plain
+
+
+12.
+
+Request: GET /1 HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in 1</h1><ul><li><a href="/1/23.jpg">23.jpg</a></li><li><a href="/1/3"><b><i>3</i></b></a></li></ul></body></html>
+13.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+14.
+
+Request: GET /uploadedFiles HTTP/1.1
+Response: HTTP/1.0 OK
+Content-Type: text/html
+
+<html><body><h1> All files in uploadedFiles</h1><ul><li><a href="/uploadedFiles/3.jpg">3.jpg</a></li><li><a href="/uploadedFiles/4.jpg">4.jpg</a></li></ul></body></html>
+15.
+
+Request: GET /uploadedFiles/3.jpg HTTP/1.1
+Response: HTTP/1.0 200 OK
+Content-Type: image/jpeg
+
+

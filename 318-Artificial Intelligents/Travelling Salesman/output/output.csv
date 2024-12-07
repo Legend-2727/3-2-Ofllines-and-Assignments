@@ -1,0 +1,5 @@
+File,Method,Method_Time (ms),Method_Cost,Method + 2-opt Time (ms),Method + 2-opt Cost,Method + Node Shift Time (ms),Method + Node Shift Cost,Method + Node Swap Time (ms),Method + Node Swap Cost
+../tsp_files/berlin52.tsp,Cheapest Insertion,17,9042,46,8759,163,8336,74,8954
+../tsp_files/berlin52.tsp,Nearest Neighbour Heuristic,0,8980,37,8056,203,8320,85,8667
+../tsp_files/berlin52.tsp,Greedy Heuristic,0,9954,44,8010,147,8211,85,9227
+
