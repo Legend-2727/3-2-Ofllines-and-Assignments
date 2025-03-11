@@ -1,0 +1,2189 @@
+[
+    {
+        "usecase": {
+            "name": "Set Event Dates",
+            "scenario": "Organizer selects start and end dates and times for the event.",
+            "actors": "Event Organizer",
+            "preconditions": "Event creation process is initiated.",
+            "steps": [
+                "Organizer selects event start date and time.",
+                "Organizer selects event end date and time."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Valid Event Date Selection",
+                "description": "Verify that the event start and end date & time are set correctly.",
+                "input": {
+                    "startDateTime": "2024-11-01 10:00",
+                    "endDateTime": "2024-11-01 18:00"
+                },
+                "expected": {
+                    "outcome": "Dates successfully saved",
+                    "status": "Valid"
+                }
+            },
+            {
+                "name": "End Date Before Start Date",
+                "description": "Verify that an error is displayed if the end date is earlier than the start date.",
+                "input": {
+                    "startDateTime": "2024-11-01 18:00",
+                    "endDateTime": "2024-11-01 10:00"
+                },
+                "expected": {
+                    "outcome": "Error displayed",
+                    "status": "Invalid date selection"
+                }
+            },
+            {
+                "name": "Missing Date Input",
+                "description": "Verify that the system handles cases where either the start or end date is not provided.",
+                "input": {
+                    "startDateTime": "2024-11-01 10:00",
+                    "endDateTime": null
+                },
+                "expected": {
+                    "outcome": "Error displayed",
+                    "status": "Date required"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Set Maximum Attendee Count",
+            "scenario": "Organizer specifies the maximum number of attendees allowed for the event.",
+            "actors": "Event Organizer",
+            "preconditions": "Event times and overheads have been defined.",
+            "steps": [
+                "Organizer sets the maximum attendee count."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Valid Attendee Count",
+                "description": "Verify that the system accepts a valid number for attendee count.",
+                "input": {
+                    "maxAttendees": 100
+                },
+                "expected": {
+                    "outcome": "Attendee count saved",
+                    "status": "Valid"
+                }
+            },
+            {
+                "name": "Zero Attendee Count",
+                "description": "Check if the system shows an error when attendee count is set to zero.",
+                "input": {
+                    "maxAttendees": 0
+                },
+                "expected": {
+                    "outcome": "Error displayed",
+                    "status": "Invalid"
+                }
+            },
+            {
+                "name": "Negative Attendee Count",
+                "description": "Verify that a negative number for attendee count is rejected.",
+                "input": {
+                    "maxAttendees": -10
+                },
+                "expected": {
+                    "outcome": "Error displayed",
+                    "status": "Invalid"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Add Venue",
+            "scenario": "Organizer selects a venue for the event.",
+            "actors": "Event Organizer",
+            "preconditions": "Budget limit has been set.",
+            "steps": [
+                "Organizer selects the venue."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Valid Venue Selection",
+                "description": "Verify that a valid venue is added successfully.",
+                "input": {
+                    "venue": "Convention Center"
+                },
+                "expected": {
+                    "outcome": "Venue added",
+                    "status": "Valid"
+                }
+            },
+            {
+                "name": "Duplicate Venue",
+                "description": "Verify that adding the same venue twice is prevented.",
+                "input": {
+                    "venue": "Convention Center"
+                },
+                "expected": {
+                    "outcome": "Error displayed",
+                    "status": "Duplicate venue"
+                }
+            },
+            {
+                "name": "Venue Exceeding Budget",
+                "description": "Verify that an error is shown if the selected venue exceeds the budget limit.",
+                "input": {
+                    "venueCost": 6000,
+                    "budgetLimit": 5000
+                },
+                "expected": {
+                    "outcome": "Error displayed",
+                    "status": "Over budget"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Attempt to Add Venue",
+            "scenario": "Organizer initiates the venue addition process.",
+            "actors": "Event Organizer",
+            "preconditions": "Organizer has decided to add a venue for the event.",
+            "steps": [
+                "Organizer attempts to add a venue.",
+                "System checks if venue was previously added."
+            ]
+        },
+       "testcases": [
+            {
+                "name": "Venue Already Added",
+                "description": "Verify that the system recognizes if a venue has already been added.",
+                "input": {
+                    "venueAlreadyAdded": true
+                },
+                "expected": {
+                    "outcome": "System indicates that venue addition is complete",
+                    "status": "Venue addition not repeated"
+                }
+            },
+            {
+                "name": "Venue Not Added",
+                "description": "Verify that the system proceeds to venue selection if no venue has been added.",
+                "input": {
+                    "venueAlreadyAdded": false
+                },
+                "expected": {
+                    "outcome": "System proceeds to venue selection",
+                    "status": "Venue selection started"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+             "name": "Set Budget Limit",
+             "scenario": "Organizer defines a budget limit for the event.",
+             "actors": "Event Organizer",
+             "preconditions": "Overhead times and attendee count are defined.",
+             "steps": [
+                 "Organizer sets the event budget limit."
+             ]
+         },
+         "testcases": [
+             {
+                 "name": "Valid Budget",
+                 "description": "Check that the system accepts a positive budget amount.",
+                 "input": {
+                     "budgetLimit": 5000
+                 },
+                 "expected": {
+                     "outcome": "Budget limit saved",
+                     "status": "Valid"
+                 }
+             },
+             {
+                 "name": "Zero Budget",
+                 "description": "Verify that the system accepts zero as a budget limit.",
+                 "input": {
+                     "budgetLimit": 0
+                 },
+                 "expected": {
+                     "outcome": "Budget limit saved",
+                     "status": "Valid"
+                 }
+             },
+             {
+                 "name": "Negative Budget",
+                 "description": "Verify that a negative budget limit is rejected.",
+                 "input": {
+                     "budgetLimit": -100
+                 },
+                 "expected": {
+                     "outcome": "Error displayed",
+                     "status": "Invalid"
+                 }
+             }
+         ]
+    },
+    {
+        "usecase": {
+        "name": "Select Location on Map",
+        "scenario": "Organizer selects a specific location on the map for venue selection.",
+        "actors": "Event Organizer",
+        "preconditions": "No venue has been added yet.",
+        "steps": [
+            "Organizer selects a location on the map.",
+            "System finds venues within a default search radius."
+        ]
+    },
+        "testcases": [
+            {
+                "name": "Valid Map Location",
+                "description": "Verify that selecting a valid location on the map allows the system to find venues nearby.",
+                "input": {
+                    "selectedLocation": "Central Park, NYC"
+                },
+                "expected": {
+                    "outcome": "System displays venues within default search radius",
+                    "status": "Valid"
+                }
+            },
+            {
+                "name": "No Venues Nearby",
+                "description": "Verify that the system displays a message if no venues are found within the default search radius.",
+                "input": {
+                    "selectedLocation": "Remote Island",
+                    "radius": "default"
+                },
+                "expected": {
+                    "outcome": "System displays 'No venues found within search radius'",
+                    "status": "No venues available"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+        "name": "Adjust Search Radius",
+        "scenario": "Organizer changes the search radius to expand or narrow down venue options.",
+        "actors": "Event Organizer",
+        "preconditions": "A location has been selected on the map.",
+        "steps": [
+            "Organizer adjusts the search radius.",
+            "System updates the list of available venues based on the new radius."
+        ]
+    },
+        "testcases": [
+        {
+            "name": "Increase Search Radius",
+            "description": "Verify that increasing the search radius expands the list of available venues.",
+            "input": {
+                "selectedLocation": "City Center",
+                "radius": "10 miles"
+            },
+            "expected": {
+                "outcome": "System displays venues within new radius",
+                "status": "Radius adjustment successful"
+            }
+        },
+        {
+            "name": "Decrease Search Radius",
+            "description": "Verify that decreasing the search radius narrows down the list of available venues.",
+            "input": {
+                "selectedLocation": "City Center",
+                "radius": "2 miles"
+            },
+            "expected": {
+                "outcome": "System displays venues within new radius",
+                "status": "Radius adjustment successful"
+            }
+        },
+        {
+            "name": "No Venues in Expanded Radius",
+            "description": "Verify that the system displays a message if no venues are found even after increasing the radius.",
+            "input": {
+                "selectedLocation": "Remote Area",
+                "radius": "15 miles"
+            },
+            "expected": {
+                "outcome": "System displays 'No venues found within search radius'",
+                "status": "No venues available"
+            }
+        }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Show Matching Venues",
+            "scenario": "System suggests venues that match the organizer's requirements based on selected location and other parameters.",
+            "actors": "Event Organizer, System",
+            "preconditions": "Organizer has selected a location on the map.",
+            "steps": [
+                "System displays venues that match capacity and location requirements.",
+                "Organizer views matching venues."
+            ]
+        },
+       "testcases": [
+            {
+                "name": "Matching Venues Displayed",
+                "description": "Verify that the system displays venues that match the selected location and capacity requirements.",
+                "input": {
+                    "location": "Downtown",
+                    "requiredCapacity": 200
+                },
+                "expected": {
+                    "outcome": "System displays matching venues",
+                    "status": "Matching venues shown"
+                }
+            },
+            {
+                "name": "No Matching Venues",
+                "description": "Verify that the system shows a message if no venues match the specified requirements.",
+                "input": {
+                    "location": "City Center",
+                    "requiredCapacity": 1000
+                },
+                "expected": {
+                    "outcome": "System displays 'No matching venues found'",
+                    "status": "No matches"
+                }
+            },
+            {
+                "name": "Multiple Matching Venues",
+                "description": "Verify that the system displays multiple matching venues sorted by proximity or relevance.",
+                "input": {
+                    "location": "Suburb",
+                    "requiredCapacity": 150
+                },
+                "expected": {
+                    "outcome": "System displays list of matching venues",
+                    "status": "Multiple venues shown"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Show Unmatched Venues Ranked by Similarity",
+            "scenario": "System displays venues that do not fully match the requirements but are close to the selected location, with some variations in capacity or other factors.",
+            "actors": "Event Organizer, System",
+            "preconditions": "No matching venues were found.",
+            "steps": [
+                "System shows venues near the selected location that do not fully meet the requirements.",
+                "Organizer views venues ranked by similarity."
+            ]
+        },
+       "testcases": [
+            {
+                "name": "Display Unmatched Venues",
+                "description": "Verify that the system displays venues that are similar but do not fully meet requirements.",
+                "input": {
+                    "location": "City Outskirts",
+                    "requiredCapacity": 300
+                },
+                "expected": {
+                    "outcome": "System displays venues ranked by similarity",
+                    "status": "Unmatched venues shown"
+                }
+            },
+            {
+                "name": "Unmatched Venues Ranked by Capacity",
+                "description": "Verify that unmatched venues are ranked primarily by how closely they meet the required capacity.",
+                "input": {
+                    "location": "Near Downtown",
+                    "requiredCapacity": 200
+                },
+                "expected": {
+                    "outcome": "System displays venues with capacity closest to requirement first",
+                    "status": "Ranked by capacity"
+                }
+            },
+            {
+                "name": "Unmatched Venues Ranked by Distance",
+                "description": "Verify that unmatched venues are ranked by proximity to the selected location if other requirements are not met.",
+                "input": {
+                    "location": "Main Street",
+                    "requiredCapacity": 500
+                },
+                "expected": {
+                    "outcome": "System displays venues with nearest distance first",
+                    "status": "Ranked by distance"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Select Coordinate as Venue",
+            "scenario": "Organizer selects the specified coordinate as the venue, indicating it is a custom or personal venue.",
+            "actors": "Event Organizer",
+            "preconditions": "Organizer has selected a location on the map.",
+            "steps": [
+                "Organizer chooses to use selected coordinate as the venue."
+            ]
+        },
+       "testcases": [
+            {
+                "name": "Select Custom Venue Coordinate",
+                "description": "Verify that selecting coordinates on the map adds a custom venue for the event.",
+                "input": {
+                    "selectedCoordinate": {
+                        "latitude": 40.7128,
+                        "longitude": -74.0060
+                    }
+                },
+                "expected": {
+                    "outcome": "System saves custom venue based on selected coordinates",
+                    "status": "Venue added"
+                }
+            },
+            {
+                "name": "Invalid Coordinate Selection",
+                "description": "Verify that the system shows an error if the selected coordinates are out of bounds or invalid.",
+                "input": {
+                    "selectedCoordinate": {
+                        "latitude": 999.9999,
+                        "longitude": -999.9999
+                    }
+                },
+                "expected": {
+                    "outcome": "System displays 'Invalid coordinates selected'",
+                    "status": "Coordinate error"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Alter Event Parameters",
+            "scenario": "Organizer adjusts event parameters if no matching or suitable venues are found.",
+            "actors": "Event Organizer",
+            "preconditions": "No suitable venues found based on current parameters.",
+            "steps": [
+                "System prompts the organizer to alter event parameters.",
+                "Organizer adjusts parameters (e.g., capacity or budget) to broaden search."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Adjust Capacity Requirement",
+                "description": "Verify that adjusting the capacity requirement affects the list of available venues.",
+                "input": {
+                    "requiredCapacity": 150,
+                    "newCapacity": 100
+                },
+                "expected": {
+                    "outcome": "System displays more available venues with new capacity requirement",
+                    "status": "Capacity adjusted"
+                }
+            },
+            {
+                "name": "Adjust Budget Requirement",
+                "description": "Verify that adjusting the budget allows for additional venues to become available.",
+                "input": {
+                    "currentBudget": 2000,
+                    "newBudget": 3000
+                },
+                "expected": {
+                    "outcome": "System displays venues within new budget",
+                    "status": "Budget adjusted"
+                }
+            },
+            {
+                "name": "Increase Search Radius",
+                "description": "Verify that increasing the search radius allows more venues to be displayed.",
+                "input": {
+                    "currentRadius": 5,
+                    "newRadius": 10
+                },
+                "expected": {
+                    "outcome": "System displays additional venues within new search radius",
+                    "status": "Radius adjusted"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Allot Rooms/Floors/Buildings",
+            "scenario": "Organizer assigns specific rooms, floors, or buildings within the selected venue.",
+            "actors": "Event Organizer",
+            "preconditions": "Venue has been selected.",
+            "steps": [
+                "Organizer assigns rooms, floors, or buildings for the event.",
+                "System verifies the allotment and shows estimated cost."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Valid Room Allotment",
+                "description": "Verify that the organizer can assign rooms or floors within the venue.",
+                "input": {
+                    "rooms": ["Room A", "Room B"],
+                    "floors": [1, 2]
+                },
+                "expected": {
+                    "outcome": "Rooms and floors successfully allotted",
+                    "status": "Allotment successful"
+                }
+            },
+            {
+                "name": "Modify Allotted Rooms",
+                "description": "Verify that the organizer can modify the allotted rooms or floors.",
+                "input": {
+                    "rooms": ["Room C", "Room D"],
+                    "floors": [3, 4]
+                },
+                "expected": {
+                    "outcome": "Modified allotment saved",
+                    "status": "Modification successful"
+                }
+            },
+            {
+                "name": "Invalid Allotment Exceeds Capacity",
+                "description": "Verify that the system shows an error if the allotted rooms/floors exceed venue capacity.",
+                "input": {
+                    "rooms": ["Room A", "Room B", "Room C"],
+                    "floors": [1, 2, 3],
+                    "venueCapacity": 2
+                },
+                "expected": {
+                    "outcome": "Error displayed: Allotment exceeds venue capacity",
+                    "status": "Invalid allotment"
+                }
+            }
+        ]
+
+    },
+    {
+        "usecase": {
+            "name": "See Estimated Cost",
+            "scenario": "Organizer views the estimated cost based on the venue and allotments.",
+            "actors": "Event Organizer",
+            "preconditions": "Venue and room allotments have been completed.",
+            "steps": [
+                "System calculates estimated cost based on the selected venue and allotments.",
+                "Organizer views the estimated cost."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "View Accurate Estimated Cost",
+                "description": "Verify that the system calculates and displays an accurate estimated cost.",
+                "input": {
+                    "venue": "Downtown Conference Center",
+                    "rooms": ["Room A", "Room B"],
+                    "totalCost": 3000
+                },
+                "expected": {
+                    "outcome": "Estimated cost displayed",
+                    "status": "Cost calculation successful"
+                }
+            },
+            {
+                "name": "Recalculate Cost After Allotment Change",
+                "description": "Verify that the system recalculates the cost if room allotments are changed.",
+                "input": {
+                    "newRooms": ["Room C"],
+                    "newTotalCost": 2000
+                },
+                "expected": {
+                    "outcome": "Updated estimated cost displayed",
+                    "status": "Cost recalculated"
+                }
+            }
+        ]
+
+    },
+    {
+        "usecase": {
+            "name": "Handle Patience Timeout",
+            "scenario": "System deletes the request if the organizer takes too long to proceed.",
+            "actors": "Event Organizer, System",
+            "preconditions": "Organizer is viewing estimated cost.",
+            "steps": [
+                "System tracks time since the last action.",
+                "System deletes request if patience timeout occurs."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Patience Timeout Triggered",
+                "description": "Verify that the system deletes the request if patience timeout is reached.",
+                "input": {
+                    "timeoutLimit": "15 minutes",
+                    "elapsedTime": "15 minutes"
+                },
+                "expected": {
+                    "outcome": "Request deleted due to timeout",
+                    "status": "Request deleted"
+                }
+            },
+            {
+                "name": "No Timeout within Limit",
+                "description": "Verify that the system does not delete the request if the organizer proceeds within the timeout limit.",
+                "input": {
+                    "timeoutLimit": "15 minutes",
+                    "elapsedTime": "10 minutes"
+                },
+                "expected": {
+                    "outcome": "Request remains active",
+                    "status": "Request retained"
+                }
+            }
+        ]
+
+    },
+    {
+        "usecase": {
+            "name": "Check Free Slot",
+            "scenario": "System checks if a free slot is available for the selected venue and time.",
+            "actors": "System",
+            "preconditions": "Organizer has chosen a venue and specified event time.",
+            "steps": [
+                "System checks the availability of a free slot for the selected date and time."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Slot Available",
+                "description": "Verify that the system confirms availability if a slot is free.",
+                "input": {
+                    "date": "2024-11-10",
+                    "time": "10:00 AM",
+                    "venue": "Downtown Conference Center"
+                },
+                "expected": {
+                    "outcome": "Slot confirmed as available",
+                    "status": "Slot available"
+                }
+            },
+            {
+                "name": "Slot Not Available",
+                "description": "Verify that the system shows an error if the slot is not free.",
+                "input": {
+                    "date": "2024-11-10",
+                    "time": "10:00 AM",
+                    "venue": "Downtown Conference Center"
+                },
+                "expected": {
+                    "outcome": "Error displayed: Slot not available",
+                    "status": "Slot unavailable"
+                }
+            }
+        ]
+    },
+    {
+       "usecase": {
+            "name": "Create Quotation",
+            "scenario": "System generates a quotation based on selected venue, allotments, and estimated cost.",
+            "actors": "System",
+            "preconditions": "Slot is confirmed as free and organizer has finalized venue and allotments.",
+            "steps": [
+                "System creates a quotation including cost and venue details.",
+                "Quotation is saved for approval."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Generate Quotation",
+                "description": "Verify that the system generates a quotation with venue details and estimated cost.",
+                "input": {
+                    "venue": "Downtown Conference Center",
+                    "estimatedCost": 3000
+                },
+                "expected": {
+                    "outcome": "Quotation created with venue details",
+                    "status": "Quotation generated"
+                }
+            },
+            {
+                "name": "Quotation Not Created Without Slot Confirmation",
+                "description": "Verify that a quotation is not created if the slot is not confirmed as free.",
+                "input": {
+                    "slotStatus": "unavailable",
+                    "estimatedCost": 3000
+                },
+                "expected": {
+                    "outcome": "Quotation not created due to unavailable slot",
+                    "status": "Quotation blocked"
+                }
+            }
+        ]
+
+
+    },
+    {
+        "usecase": {
+            "name": "Delete Request by Organizer",
+            "scenario": "The organizer deletes the request if they decide not to proceed with the venue or event booking.",
+            "actors": "Event Organizer",
+            "preconditions": "The request is in progress and not yet approved.",
+            "steps": [
+                "Organizer decides to delete the request.",
+                "System confirms deletion and removes the request from active records."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Deletion by Organizer",
+                "description": "Verify that the organizer can delete the request successfully.",
+                "input": {
+                    "action": "deleteRequest",
+                    "initiatedBy": "organizer"
+                },
+                "expected": {
+                    "outcome": "Request successfully deleted by organizer",
+                    "status": "Deletion confirmed"
+                }
+            },
+            {
+                "name": "Attempt Deletion of Already Deleted Request",
+                "description": "Verify that the system handles cases where the organizer attempts to delete a request that has already been deleted.",
+                "input": {
+                    "requestStatus": "deleted",
+                    "action": "deleteRequest",
+                    "initiatedBy": "organizer"
+                },
+                "expected": {
+                    "outcome": "System displays 'Request already deleted' message",
+                    "status": "No action taken"
+                }
+            },
+            {
+                "name": "Deletion Confirmation Message",
+                "description": "Verify that the system provides a confirmation message after the organizer successfully deletes the request.",
+                "input": {
+                    "action": "deleteRequest",
+                    "initiatedBy": "organizer"
+                },
+                "expected": {
+                    "outcome": "System displays 'Request deleted successfully' confirmation message",
+                    "status": "Confirmation displayed"
+                }
+            }
+        ]
+
+    },
+    {
+        "usecase": {
+            "name": "Accept or Reject Proposal",
+            "scenario": "Organizer accepts or rejects the proposal based on the quotation provided.",
+            "actors": "Event Organizer",
+            "preconditions": "A quotation proposal has been generated and presented to the organizer.",
+            "steps": [
+                "Organizer reviews the proposal.",
+                "Organizer accepts or rejects the proposal."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Accept Proposal",
+                "description": "Verify that the organizer can successfully accept the proposal.",
+                "input": {
+                    "action": "acceptProposal",
+                    "proposalStatus": "presented"
+                },
+                "expected": {
+                    "outcome": "Proposal accepted",
+                    "status": "Proposal processing proceeds"
+                }
+            },
+            {
+                "name": "Reject Proposal",
+                "description": "Verify that the organizer can successfully reject the proposal.",
+                "input": {
+                    "action": "rejectProposal",
+                    "proposalStatus": "presented"
+                },
+                "expected": {
+                    "outcome": "Proposal rejected",
+                    "status": "Request redirected back to selection or terminated"
+                }
+            }
+        ]
+
+    },
+    {
+        "usecase": {
+            "name": "Check Availability",
+            "scenario": "System checks if the selected venue or slot is still available before proceeding to payment.",
+            "actors": "System",
+            "preconditions": "Organizer has accepted the proposal and is ready to proceed.",
+            "steps": [
+                "System verifies if the selected venue or slot is still available."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Slot Available",
+                "description": "Verify that the system confirms availability if the slot is free.",
+                "input": {
+                    "venue": "Downtown Conference Center",
+                    "slotStatus": "available"
+                },
+                "expected": {
+                    "outcome": "Slot confirmed as available",
+                    "status": "Proceed to payment"
+                }
+            },
+            {
+                "name": "Slot Not Available",
+                "description": "Verify that the system indicates unavailability if the slot is not free.",
+                "input": {
+                    "venue": "Downtown Conference Center",
+                    "slotStatus": "unavailable"
+                },
+                "expected": {
+                    "outcome": "System displays 'Slot not available' message",
+                    "status": "Return to selection or terminate request"
+                }
+            },
+            {
+                "name": "Check Availability After Timeout",
+                "description": "Verify that the system automatically checks availability again if there was a delay or timeout in proceeding.",
+                "input": {
+                    "venue": "Downtown Conference Center",
+                    "timeoutOccurred": true
+                },
+                "expected": {
+                    "outcome": "System rechecks availability and displays updated status",
+                    "status": "Availability status refreshed"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Attempt Payment",
+            "scenario": "System initiates payment after slot is confirmed as available.",
+            "actors": "Event Organizer, System",
+            "preconditions": "Slot availability has been confirmed.",
+            "steps": [
+                "System initiates payment for the event booking.",
+                "Organizer completes payment process."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Payment",
+                "description": "Verify that payment is processed successfully when the organizer has sufficient funds.",
+                "input": {
+                    "paymentStatus": "initiated",
+                    "fundsAvailable": true
+                },
+                "expected": {
+                    "outcome": "Payment successfully processed",
+                    "status": "Booking confirmed"
+                }
+            },
+            {
+                "name": "Payment Failure Due to Insufficient Funds",
+                "description": "Verify that the system shows an error if payment fails due to insufficient funds.",
+                "input": {
+                    "paymentStatus": "initiated",
+                    "fundsAvailable": false
+                },
+                "expected": {
+                    "outcome": "Payment failed due to insufficient funds",
+                    "status": "Booking not confirmed"
+                }
+            },
+            {
+                "name": "Payment Network Failure",
+                "description": "Verify that the system handles network failures gracefully during payment.",
+                "input": {
+                    "paymentStatus": "initiated",
+                    "networkStatus": "failure"
+                },
+                "expected": {
+                    "outcome": "System displays 'Network error, please try again'",
+                    "status": "Retry payment or terminate"
+                }
+            },
+            {
+                "name": "Duplicate Payment Prevention",
+                "description": "Verify that the system prevents duplicate payments for the same booking.",
+                "input": {
+                    "paymentStatus": "alreadyProcessed",
+                    "attemptedPayment": "duplicate"
+                },
+                "expected": {
+                    "outcome": "System displays 'Payment already processed'",
+                    "status": "No duplicate payment made"
+                }
+            }
+        ]
+
+    },
+    {
+        "usecase": {
+            "name": "Enter Search Prompt for Rental/Food Service",
+            "scenario": "The organizer searches for rental or food service options around the selected venue.",
+            "actors": "Event Organizer",
+            "preconditions": "The organizer has chosen to add rental or food services.",
+            "steps": [
+                "Organizer enters a search prompt.",
+                "System searches for rental or food services within the area around the venue.",
+                "System displays the search results."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Search for Services",
+                "description": "Verify that entering a valid search prompt returns relevant results.",
+                "input": {
+                    "searchPrompt": "catering",
+                    "venueLocation": "Downtown"
+                },
+                "expected": {
+                    "outcome": "System displays catering options within venue area",
+                    "status": "Search successful"
+                }
+            },
+            {
+                "name": "No Results Found",
+                "description": "Verify that the system displays a message if no services match the search prompt.",
+                "input": {
+                    "searchPrompt": "luxury chairs",
+                    "venueLocation": "Remote Area"
+                },
+                "expected": {
+                    "outcome": "System displays 'No services found' message",
+                    "status": "No results found"
+                }
+            },
+            {
+                "name": "Invalid Search Prompt",
+                "description": "Verify that the system displays an error for an empty or invalid search prompt.",
+                "input": {
+                    "searchPrompt": "",
+                    "venueLocation": "City Center"
+                },
+                "expected": {
+                    "outcome": "System displays 'Enter a valid search term' message",
+                    "status": "Search not initiated"
+                }
+            }
+        ]
+
+    },
+    {
+        "usecase": {
+            "name": "Select Business for Service or Accommodation",
+            "scenario": "The organizer selects a specific business from the search results to provide rental, food services, or accommodations.",
+            "actors": "Event Organizer",
+            "preconditions": "Search results are displayed based on the organizer's search prompt.",
+            "steps": [
+                "Organizer reviews search results.",
+                "Organizer selects a business to provide the required service or accommodation."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Business Selection for Service",
+                "description": "Verify that the organizer can successfully select a business from the search results for a service such as rental or food.",
+                "input": {
+                    "selectedBusiness": "City Catering Services",
+                    "serviceType": "Food Service"
+                },
+                "expected": {
+                    "outcome": "Business selected and added to event service providers",
+                    "status": "Selection successful"
+                }
+            },
+            {
+                "name": "Successful Business Selection for Accommodation",
+                "description": "Verify that the organizer can successfully select a business from the search results to provide accommodations.",
+                "input": {
+                    "selectedBusiness": "Downtown Hotel",
+                    "serviceType": "Accommodation"
+                },
+                "expected": {
+                    "outcome": "Business selected and added to event accommodations",
+                    "status": "Selection successful"
+                }
+            },
+            {
+                "name": "Attempt to Select Invalid Business",
+                "description": "Verify that the system shows an error if the organizer tries to select a business not in the search results.",
+                "input": {
+                    "selectedBusiness": "Invalid Catering",
+                    "serviceType": "Food Service"
+                },
+                "expected": {
+                    "outcome": "System displays 'Invalid selection' message",
+                    "status": "Selection prevented"
+                }
+            },
+            {
+                "name": "Multiple Business Selection for Various Services",
+                "description": "Verify that the organizer can select multiple businesses for different services or accommodations as needed.",
+                "input": {
+                    "selectedBusinesses": ["City Catering Services", "Event Rentals", "Downtown Hotel"],
+                    "serviceTypes": ["Food Service", "Rental", "Accommodation"]
+                },
+                "expected": {
+                    "outcome": "Multiple businesses added to event service providers and accommodations",
+                    "status": "Selection successful"
+                }
+            },
+            {
+                "name": "Multiple Business Selection for Same Service",
+                "description": "Verify that the organizer can select multiple businesses for the same type of service, such as accommodations.",
+                "input": {
+                    "selectedBusinesses": ["Downtown Hotel", "Riverside Inn"],
+                    "serviceType": "Accommodation"
+                },
+                "expected": {
+                    "outcome": "Multiple accommodations added to event accommodations",
+                    "status": "Selection successful"
+                }
+            }
+        ]
+
+    },
+    {
+        "usecase": {
+            "name": "Select Required Items",
+            "scenario": "The organizer selects the required items from the chosen business for the event.",
+            "actors": "Event Organizer",
+            "preconditions": "The organizer has selected a business to provide services.",
+            "steps": [
+                "Organizer browses available items from the business.",
+                "Organizer selects required items for the event."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Item Selection",
+                "description": "Verify that the organizer can successfully select items offered by the business.",
+                "input": {
+                    "selectedItems": ["Buffet Setup", "Table Linens"]
+                },
+                "expected": {
+                    "outcome": "Selected items added to event services",
+                    "status": "Item selection successful"
+                }
+            },
+            {
+                "name": "Select Out-of-Stock Item",
+                "description": "Verify that the system shows an error if an organizer tries to select an item that is out of stock.",
+                "input": {
+                    "selectedItem": "Projector",
+                    "itemStatus": "out-of-stock"
+                },
+                "expected": {
+                    "outcome": "System displays 'Item out of stock' message",
+                    "status": "Item selection prevented"
+                }
+            },
+            {
+                "name": "Select Multiple Items",
+                "description": "Verify that the organizer can select multiple items from the same business.",
+                "input": {
+                    "selectedItems": ["Table", "Chair", "Tent"]
+                },
+                "expected": {
+                    "outcome": "All selected items added to event services",
+                    "status": "Multiple item selection successful"
+                }
+            }
+        ]
+
+    }, 
+     {
+         "usecase": {
+             "name": "Set Delivery and Retrieval Times for Services",
+             "scenario": "The organizer sets the delivery and retrieval times for the selected services.",
+             "actors": "Event Organizer",
+             "preconditions": "Required items have been selected for the event.",
+             "steps": [
+                 "Organizer sets the delivery time for the items.",
+                 "Organizer sets the retrieval time for the items.",
+                 "System confirms the set times."
+             ]
+         },
+         "testcases": [
+             {
+                 "name": "Set Valid Delivery and Retrieval Times",
+                 "description": "Verify that the organizer can set valid delivery and retrieval times.",
+                 "input": {
+                     "deliveryTime": "10:00 AM",
+                     "retrievalTime": "6:00 PM"
+                 },
+                 "expected": {
+                     "outcome": "Delivery and retrieval times saved successfully",
+                     "status": "Times set successfully"
+                 }
+             },
+             {
+                 "name": "Set Retrieval Time Before Delivery Time",
+                 "description": "Verify that the system prevents setting a retrieval time that is earlier than the delivery time.",
+                 "input": {
+                     "deliveryTime": "4:00 PM",
+                     "retrievalTime": "10:00 AM"
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Retrieval time cannot be before delivery time' message",
+                     "status": "Times not saved"
+                 }
+             },
+             {
+                 "name": "Set Delivery Time Outside Allowed Hours",
+                 "description": "Verify that the system prevents setting a delivery time outside of allowed hours.",
+                 "input": {
+                     "deliveryTime": "3:00 AM",
+                     "allowedHours": "8:00 AM - 10:00 PM"
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Delivery time outside allowed hours' message",
+                     "status": "Time not saved"
+                 }
+             },
+             {
+                 "name": "Modify Delivery and Retrieval Times",
+                 "description": "Verify that the organizer can modify the delivery and retrieval times after initial setup.",
+                 "input": {
+                     "newDeliveryTime": "9:00 AM",
+                     "newRetrievalTime": "5:00 PM"
+                 },
+                 "expected": {
+                     "outcome": "Modified times saved successfully",
+                     "status": "Times updated"
+                 }
+             }
+         ]
+ 
+     },
+     {
+         "usecase": {
+             "name": "Set Booking Time Range for Accommodations",
+             "scenario": "The organizer sets the booking time range for accommodations associated with the event.",
+             "actors": "Event Organizer",
+             "preconditions": "Accommodation services have been added to the event.",
+             "steps": [
+                 "Organizer sets the start and end time for the booking.",
+                 "System saves the booking time range."
+             ]
+         },
+         "testcases": [
+             {
+                 "name": "Set Valid Booking Time Range",
+                 "description": "Verify that the organizer can set a valid booking time range.",
+                 "input": {
+                     "startTime": "2:00 PM",
+                     "endTime": "11:00 AM next day"
+                 },
+                 "expected": {
+                     "outcome": "Booking time range saved successfully",
+                     "status": "Time range set"
+                 }
+             },
+             {
+                 "name": "Set Booking Time Range Exceeding Venue Availability",
+                 "description": "Verify that the system prevents setting a booking time range that exceeds the venue’s availability hours.",
+                 "input": {
+                     "startTime": "8:00 AM",
+                     "endTime": "10:00 PM",
+                     "venueAvailability": "9:00 AM - 9:00 PM"
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Time range exceeds venue availability' message",
+                     "status": "Time range not saved"
+                 }
+             },
+             {
+                 "name": "Set Booking Time with Overlapping Events",
+                 "description": "Verify that the system alerts if the selected booking time range overlaps with another event’s booking.",
+                 "input": {
+                     "startTime": "2:00 PM",
+                     "endTime": "5:00 PM",
+                     "overlappingEvent": true
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Time range overlaps with another event' message",
+                     "status": "Time range not saved"
+                 }
+             }
+         ]
+ 
+     },
+     {
+         "usecase": {
+             "name": "Modify Assigned Rooms",
+             "scenario": "The organizer modifies the assigned rooms for attendees as per event requirements.",
+             "actors": "Event Organizer",
+             "preconditions": "Rooms have been initially assigned to attendees.",
+             "steps": [
+                 "Organizer reviews the assigned rooms.",
+                 "Organizer modifies room assignments as needed.",
+                 "System saves the updated room assignments."
+             ]
+         },
+         "testcases": [
+             {
+                 "name": "Modify Room Assignment Successfully",
+                 "description": "Verify that the organizer can modify room assignments for attendees.",
+                 "input": {
+                     "currentRoomAssignment": {
+                         "Room A": ["Attendee 1", "Attendee 2"]
+                     },
+                     "newAssignment": {
+                         "Room B": ["Attendee 1"]
+                     }
+                 },
+                 "expected": {
+                     "outcome": "Room assignments updated successfully",
+                     "status": "Assignments modified"
+                 }
+             },
+             {
+                 "name": "Assign Attendee to Full Room",
+                 "description": "Verify that the system prevents assigning an attendee to a room that is already at full capacity.",
+                 "input": {
+                     "room": "Room A",
+                     "capacity": 2,
+                     "currentOccupancy": 2
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Room is at full capacity' message",
+                     "status": "Assignment not saved"
+                 }
+             },
+             {
+                 "name": "Remove Attendee from Room",
+                 "description": "Verify that the organizer can remove an attendee from an assigned room.",
+                 "input": {
+                     "currentRoomAssignment": {
+                         "Room A": ["Attendee 1", "Attendee 2"]
+                     },
+                     "removeAttendee": "Attendee 1"
+                 },
+                 "expected": {
+                     "outcome": "Attendee removed from room assignment",
+                     "status": "Assignment updated"
+                 }
+             }
+         ]
+ 
+     },
+     {
+        "usecase": {
+             "name": "Handle Delivery Location for Rentals",
+             "scenario": "System checks and manages delivery locations for rental items or services associated with the event.",
+             "actors": "System",
+             "preconditions": "Organizer has selected rentals or delivery options associated with the venue.",
+             "steps": [
+                 "System checks if a delivery location is present.",
+                 "If absent, system prompts to add a delivery location.",
+                 "If present, system confirms and updates the delivery location in event orders."
+             ]
+         },
+         "testcases": [
+             {
+                 "name": "Delivery Location Present",
+                 "description": "Verify that the system confirms the existing delivery location if it is already set.",
+                 "input": {
+                     "deliveryLocationStatus": "present"
+                 },
+                 "expected": {
+                     "outcome": "System confirms delivery location",
+                     "status": "Location confirmed"
+                 }
+             },
+             {
+                 "name": "Add New Delivery Location",
+                 "description": "Verify that the system prompts for a new delivery location if none is set.",
+                 "input": {
+                     "deliveryLocationStatus": "absent",
+                     "newLocation": "123 Event Street"
+                 },
+                 "expected": {
+                     "outcome": "System prompts and saves new delivery location",
+                     "status": "Location added"
+                 }
+             },
+             {
+                 "name": "Invalid Delivery Location",
+                 "description": "Verify that the system shows an error if the provided delivery location is invalid.",
+                 "input": {
+                     "deliveryLocationStatus": "absent",
+                     "newLocation": ""
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Invalid delivery location' error",
+                     "status": "Location not added"
+                 }
+             },
+             {
+                 "name": "Update Existing Delivery Location",
+                 "description": "Verify that the system allows updating an existing delivery location.",
+                 "input": {
+                     "deliveryLocationStatus": "present",
+                     "newLocation": "456 Updated Street"
+                 },
+                 "expected": {
+                     "outcome": "System updates delivery location",
+                     "status": "Location updated"
+                 }
+             },
+             {
+                 "name": "Check Delivery Location for Multiple Rentals",
+                 "description": "Verify that the system checks delivery location requirements for multiple rental items.",
+                 "input": {
+                     "rentalItems": ["Chairs", "Tables", "Projector"],
+                     "deliveryLocationStatus": "present"
+                 },
+                 "expected": {
+                     "outcome": "System confirms or updates delivery location for each rental item",
+                     "status": "Locations confirmed or updated"
+                 }
+             }
+         ]
+ 
+     },
+     {
+         "usecase": {
+             "name": "Request Quote",
+             "scenario": "The organizer requests a quote to review the estimated cost before making a decision.",
+             "actors": "Event Organizer",
+             "preconditions": "The organizer has reviewed the estimated cost.",
+             "steps": [
+                 "Organizer requests a quote.",
+                 "System generates a quote based on selected services and resources.",
+                 "System displays the quote to the organizer."
+             ]
+         },
+         "testcases": [
+             {
+                 "name": "Successful Quote Request",
+                 "description": "Verify that the organizer can successfully request a quote, and the system generates it.",
+                 "input": {
+                     "action": "requestQuote",
+                     "servicesSelected": ["Venue Rental", "Catering"]
+                 },
+                 "expected": {
+                     "outcome": "Quote generated and displayed to organizer",
+                     "status": "Quote request successful"
+                 }
+             },
+             {
+                 "name": "Quote Request with No Services Selected",
+                 "description": "Verify that the system displays an error if the organizer requests a quote with no services selected.",
+                 "input": {
+                     "action": "requestQuote",
+                     "servicesSelected": []
+                 },
+                 "expected": {
+                     "outcome": "System displays 'No services selected' message",
+                     "status": "Quote request failed"
+                 }
+             },
+             {
+                 "name": "Quote Request with Missing Information",
+                 "description": "Verify that the system handles missing information (e.g., missing dates or venue details) during quote generation.",
+                 "input": {
+                     "action": "requestQuote",
+                     "servicesSelected": ["Venue Rental"],
+                     "date": null
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Incomplete information' message",
+                     "status": "Quote request failed"
+                 }
+             }
+         ]
+     },
+     {
+         "usecase": {
+             "name": "Accept or Reject Proposal",
+             "scenario": "The organizer decides to accept or reject the proposal based on the generated quote.",
+             "actors": "Event Organizer",
+             "preconditions": "A quote has been generated and presented to the organizer.",
+             "steps": [
+                 "Organizer reviews the proposal.",
+                 "Organizer accepts or rejects the proposal."
+             ]
+         },
+         "testcases": [
+             {
+                 "name": "Accept Proposal",
+                 "description": "Verify that the organizer can successfully accept the proposal.",
+                 "input": {
+                     "action": "acceptProposal",
+                     "proposalStatus": "presented"
+                 },
+                 "expected": {
+                     "outcome": "Proposal accepted",
+                     "status": "Proceed to availability check"
+                 }
+             },
+             {
+                 "name": "Reject Proposal",
+                 "description": "Verify that the organizer can successfully reject the proposal.",
+                 "input": {
+                     "action": "rejectProposal",
+                     "proposalStatus": "presented"
+                 },
+                 "expected": {
+                     "outcome": "Proposal rejected",
+                     "status": "Process terminated or redirected to selection"
+                 }
+             },
+             {
+                 "name": "Re-Accept or Re-Reject Proposal",
+                 "description": "Verify that the system prevents re-acceptance or re-rejection of a proposal that has already been acted upon.",
+                 "input": {
+                     "action": "acceptProposal",
+                     "proposalStatus": "alreadyAccepted"
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Proposal already accepted/rejected' message",
+                     "status": "No further action taken"
+                 }
+             }
+         ]
+     },
+     {
+         "usecase": {
+             "name": "Check Availability of Selected Services",
+             "scenario": "System checks if the selected services and resources are still available after the organizer accepts the proposal.",
+             "actors": "System",
+             "preconditions": "Organizer has accepted the proposal.",
+             "steps": [
+                 "System verifies the availability of selected services and resources."
+             ]
+         },
+         "testcases": [
+             {
+                 "name": "Availability Confirmed",
+                 "description": "Verify that the system confirms availability if the services are still available.",
+                 "input": {
+                     "services": ["Venue Rental", "Catering"],
+                     "availabilityStatus": "available"
+                 },
+                 "expected": {
+                     "outcome": "System confirms availability and proceeds to payment",
+                     "status": "Services available"
+                 }
+             },
+             {
+                 "name": "Service Unavailable",
+                 "description": "Verify that the system displays an error if one or more selected services are unavailable.",
+                 "input": {
+                     "services": ["Venue Rental"],
+                     "availabilityStatus": "unavailable"
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Service unavailable' message",
+                     "status": "Return to selection or terminate process"
+                 }
+             },
+             {
+                 "name": "Automatic Availability Re-check",
+                 "description": "Verify that the system re-checks availability after a timeout if there is a delay in moving to payment.",
+                 "input": {
+                     "services": ["Catering"],
+                     "availabilityStatus": "checkAfterTimeout"
+                 },
+                 "expected": {
+                     "outcome": "System rechecks and updates availability status",
+                     "status": "Availability re-checked"
+                 }
+             }
+         ]
+     },
+     {
+         "usecase": {
+             "name": "Attempt Payment",
+             "scenario": "The system initiates the payment process after confirming service availability.",
+             "actors": "Event Organizer, System",
+             "preconditions": "Service availability has been confirmed.",
+             "steps": [
+                 "System initiates payment for the selected services.",
+                 "Organizer completes payment process."
+             ]
+         },
+         "testcases": [
+             {
+                 "name": "Successful Payment",
+                 "description": "Verify that the organizer can complete the payment successfully when funds are available.",
+                 "input": {
+                     "paymentStatus": "initiated",
+                     "fundsAvailable": true
+                 },
+                 "expected": {
+                     "outcome": "Payment processed successfully",
+                     "status": "Booking confirmed"
+                 }
+             },
+             {
+                 "name": "Payment Failure Due to Insufficient Funds",
+                 "description": "Verify that the system shows an error if payment fails due to insufficient funds.",
+                 "input": {
+                     "paymentStatus": "initiated",
+                     "fundsAvailable": false
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Insufficient funds' message",
+                     "status": "Booking not confirmed"
+                 }
+             },
+             {
+                 "name": "Payment Network Failure",
+                 "description": "Verify that the system handles network failures gracefully during the payment process.",
+                 "input": {
+                     "paymentStatus": "initiated",
+                     "networkStatus": "failure"
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Network error, please retry' message",
+                     "status": "Payment not processed"
+                 }
+             },
+             {
+                 "name": "Duplicate Payment Prevention",
+                 "description": "Verify that the system prevents duplicate payments for the same booking.",
+                 "input": {
+                     "paymentStatus": "alreadyProcessed",
+                     "attemptedPayment": "duplicate"
+                 },
+                 "expected": {
+                     "outcome": "System displays 'Payment already processed' message",
+                     "status": "No duplicate payment made"
+                 }
+             }
+         ]
+     },
+     {
+         "usecase": {
+             "name": "Patience Timeout on Quote Review",
+             "scenario": "System automatically cancels the quote if the organizer does not take action within a specified time.",
+             "actors": "System",
+             "preconditions": "Quote has been displayed to the organizer.",
+             "steps": [
+                 "System tracks the time since the quote was presented.",
+                 "System automatically cancels the quote if the patience timeout is reached."
+             ]
+         },
+         "testcases": [
+             {
+                 "name": "Patience Timeout Reached",
+                 "description": "Verify that the system cancels the quote if the patience timeout is reached.",
+                 "input": {
+                     "timeoutLimit": "15 minutes",
+                     "elapsedTime": "15 minutes"
+                 },
+                 "expected": {
+                     "outcome": "System cancels quote and removes it from active requests",
+                     "status": "Quote cancelled"
+                 }
+             },
+             {
+                 "name": "No Timeout Within Limit",
+                 "description": "Verify that the system does not cancel the quote if the organizer proceeds within the timeout limit.",
+                 "input": {
+                     "timeoutLimit": "15 minutes",
+                     "elapsedTime": "10 minutes"
+                 },
+                 "expected": {
+                     "outcome": "Quote remains active",
+                     "status": "Quote retained"
+                 }
+             },
+             {
+                 "name": "Timeout Alert Message",
+                 "description": "Verify that the system alerts the organizer about the timeout approaching.",
+                 "input": {
+                     "timeoutLimit": "15 minutes",
+                     "elapsedTime": "14 minutes"
+                 },
+                 "expected": {
+                     "outcome": "System displays '1 minute remaining to accept quote' message",
+                     "status": "Alert displayed"
+                 }
+             }
+         ]
+     },
+     {
+        "usecase": {
+            "name": "Notify Organizers and Co-organizers",
+            "scenario": "The system notifies organizers and co-organizers when the event is 3 days or less away.",
+            "actors": "System",
+            "preconditions": "Event start date is detected to be 3 days or less away.",
+            "steps": [
+                "System detects that the event start date is 3 days or less away.",
+                "System sends notifications to the organizers and co-organizers."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Notification to Organizers",
+                "description": "Verify that notifications are sent to organizers and co-organizers 3 days before the event.",
+                "input": {
+                    "daysBeforeEvent": 3,
+                    "organizers": ["Organizer1", "Co-organizer1"]
+                },
+                "expected": {
+                    "outcome": "Notifications sent to organizers and co-organizers",
+                    "status": "Notification successful"
+                }
+            },
+            {
+                "name": "No Notification if More than 3 Days",
+                "description": "Verify that the system does not send notifications if the event is more than 3 days away.",
+                "input": {
+                    "daysBeforeEvent": 4,
+                    "organizers": ["Organizer1", "Co-organizer1"]
+                },
+                "expected": {
+                    "outcome": "No notifications sent",
+                    "status": "No action taken"
+                }
+            }
+        ]
+    },
+
+
+    {
+        "usecase": {
+            "name": "Notify Involved Businesses",
+
+
+
+            "scenario": "The system notifies involved businesses when the event is 1 day away.",
+            "actors": "System",
+            "preconditions": "Event start date is detected to be 1 day away.",
+            "steps": [
+                "System detects that the event start date is 1 day away.",
+                "System sends notifications to all involved businesses."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Notification to Businesses",
+                "description": "Verify that the system notifies all businesses involved in the event 1 day before the event.",
+                "input": {
+                    "daysBeforeEvent": 1,
+                    "businesses": ["Business1", "Business2"]
+                },
+                "expected": {
+                    "outcome": "Notifications sent to involved businesses",
+                    "status": "Notification successful"
+                }
+            },
+            {
+                "name": "No Notification if More than 1 Day",
+                "description": "Verify that the system does not send notifications to businesses if the event is more than 1 day away.",
+                "input": {
+                    "daysBeforeEvent": 2,
+                    "businesses": ["Business1", "Business2"]
+                },
+                "expected": {
+                    "outcome": "No notifications sent",
+                    "status": "No action taken"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Request Feedback from Organizer on Business",
+            "scenario": "After the event ends, the system requests feedback from the event organizer on involved businesses.",
+            "actors": "System, Event Organizer",
+            "preconditions": "The event has ended.",
+            "steps": [
+                "System waits until the event ends.",
+                "System sends a feedback request to the event organizer about the businesses."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Feedback Request to Organizer",
+                "description": "Verify that the system sends a feedback request to the organizer after the event ends.",
+                "input": {
+                    "eventStatus": "ended",
+                    "organizer": "Organizer1"
+                },
+                "expected": {
+                    "outcome": "Feedback request sent to organizer",
+                    "status": "Request successful"
+                }
+            },
+            {
+                "name": "No Feedback Request if Event Ongoing",
+                "description": "Verify that the system does not send a feedback request if the event is still ongoing.",
+                "input": {
+                    "eventStatus": "ongoing",
+                    "organizer": "Organizer1"
+                },
+                "expected": {
+                    "outcome": "No feedback request sent",
+                    "status": "No action taken"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Request Feedback from Businesses on Event Organizer",
+            "scenario": "After the event ends, the system requests feedback from businesses on the event organizer.",
+            "actors": "System, Businesses",
+            "preconditions": "The event has ended.",
+            "steps": [
+                "System waits until the event ends.",
+                "System sends a feedback request to involved businesses about the event organizer."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Feedback Request to Businesses",
+                "description": "Verify that the system sends a feedback request to involved businesses after the event ends.",
+                "input": {
+                    "eventStatus": "ended",
+                    "businesses": ["Business1", "Business2"]
+                },
+                "expected": {
+                    "outcome": "Feedback request sent to businesses",
+                    "status": "Request successful"
+                }
+            },
+            {
+                "name": "No Feedback Request if Event Ongoing",
+                "description": "Verify that the system does not send feedback requests if the event is still ongoing.",
+                "input": {
+                    "eventStatus": "ongoing",
+                    "businesses": ["Business1", "Business2"]
+                },
+                "expected": {
+                    "outcome": "No feedback request sent",
+                    "status": "No action taken"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Mark Unacknowledged Deliveries",
+            "scenario": "The system marks deliveries as unacknowledged if they have not been confirmed within 7 days after the event ends.",
+            "actors": "System",
+            "preconditions": "The event has ended, and 7 days have passed.",
+            "steps": [
+                "System waits 7 days after the event ends.",
+                "System marks any deliveries that remain unacknowledged."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Mark Deliveries as Unacknowledged",
+                "description": "Verify that the system marks unacknowledged deliveries 7 days after the event ends.",
+                "input": {
+                    "daysAfterEventEnd": 7,
+                    "unacknowledgedDeliveries": ["Delivery1", "Delivery2"]
+                },
+                "expected": {
+                    
+                    "outcome": "Unacknowledged deliveries marked",
+                    "status": "Deliveries marked"
+                }
+            },
+            {
+                "name": "No Action if All Deliveries Acknowledged",
+                "description": "Verify that the system does not mark any deliveries if all were acknowledged within 7 days.",
+                "input": {
+                    "daysAfterEventEnd": 7,
+                    "unacknowledgedDeliveries": []
+                },
+                "expected": {
+                    "outcome": "No deliveries marked",
+
+                    "status": "No action needed"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Process Order Cancellation Request",
+            "scenario": "The system processes an order cancellation request initiated by a business or from an external request.",
+            "actors": "System, Business, External Requester",
+            "preconditions": "An order cancellation request has been received.",
+            "steps": [
+                "System receives the order cancellation request.",
+                "System notifies the organizer and business of the cancellation request.",
+                "System checks the source of the request (business or external)."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Cancellation Request from Business",
+                "description": "Verify that the system processes an order cancellation request initiated by the business and notifies all parties.",
+                "input": {
+                    "requestSource": "business"
+                },
+                "expected": {
+                    "outcome": "Organizer and business notified of cancellation request",
+                    "status": "Notification successful"
+                }
+            }
+
+            
+        ]
+    },
+
+
+
+    {
+        "usecase": {
+            "name": "Unlock Business After Funds Restored",
+            "scenario": "The system unlocks the business to allow new orders once sufficient funds are restored.",
+            "actors": "System",
+            "preconditions": "The business account has been replenished to cover potential refunds.",
+            "steps": [
+                "System detects that sufficient funds have been restored.",
+                "System unlocks the business to allow new orders."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Business Unlock",
+                "description": "Verify that the system successfully unlocks the business after funds are restored.",
+                "input": {
+                    "businessFunds": "restored"
+                },
+                "expected": {
+                    "outcome": "Business unlocked for new orders",
+                    "status": "Unlock successful"
+                }
+            },
+            {
+                "name": "No Unlock if Funds Insufficient",
+                "description": "Verify that the system does not unlock the business if sufficient funds are not restored.",
+                "input": {
+                    "businessFunds": "insufficient"
+                },
+                "expected": {
+                    "outcome": "Business remains locked",
+                    "status": "No action taken"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Authorize Payment",
+            "scenario": "The organizer authorizes the payment to initiate the deduction process.",
+            "actors": "Event Organizer",
+            "preconditions": "The organizer has reviewed and approved the payment amount.",
+            "steps": [
+                "Organizer authorizes the payment.",
+                "System receives authorization and begins payment processing."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Authorization",
+                "description": "Verify that the organizer can successfully authorize payment, allowing the system to proceed.",
+                "input": {
+                    "authorizationStatus": "authorized"
+                },
+                "expected": {
+                    "outcome": "Payment authorized, system proceeds to deduct amount",
+                    "status": "Authorization successful"
+                }
+            },
+            {
+                "name": "Failed Authorization",
+                "description": "Verify that the system does not proceed with deduction if authorization fails.",
+                "input": {
+                    "authorizationStatus": "failed"
+                },
+                "expected": {
+                    "outcome": "System displays 'Authorization failed' message",
+                    "status": "No deduction attempted"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Attempt to Deduct Full Amount",
+            "scenario": "The system attempts to deduct the full payment amount from the organizer’s account.",
+            "actors": "System",
+            "preconditions": "Payment has been authorized by the organizer.",
+            "steps": [
+                "System attempts to deduct the full amount from the organizer’s account.",
+                "System checks if the payment was successfully deducted."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Deduction",
+                "description": "Verify that the system successfully deducts the full amount from the organizer's account when funds are available.",
+                "input": {
+                    "amount": 1000,
+                    "fundsAvailable": true
+                },
+                "expected": {
+                    "outcome": "Amount successfully deducted",
+                    "status": "Deduction successful"
+                }
+            },
+            {
+                "name": "Deduction Failure Due to Insufficient Funds",
+                "description": "Verify that the system handles the deduction failure if there are insufficient funds.",
+                "input": {
+                    "amount": 1000,
+                    "fundsAvailable": false
+                },
+                "expected": {
+                    "outcome": "System displays 'Insufficient funds' message",
+                    "status": "Deduction failed"
+                }
+            },
+            {
+                "name": "Deduction Failure Due to System Error",
+                "description": "Verify that the system handles deduction failure due to a system error.",
+                "input": {
+                    "amount": 1000,
+                    "systemStatus": "error"
+                },
+                "expected": {
+                    "outcome": "System displays 'Payment processing error, please retry' message",
+                    "status": "Deduction failed"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Check Payment Success",
+            "scenario": "The system verifies if the payment deduction was successful.",
+            "actors": "System",
+            "preconditions": "The system attempted to deduct the full amount from the organizer’s account.",
+            "steps": [
+                "System checks if the payment was deducted successfully.",
+                "System proceeds based on the success or failure of the deduction."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Payment Successful",
+                "description": "Verify that the system correctly identifies a successful payment.",
+                "input": {
+                    "deductionStatus": "successful"
+                },
+                "expected": {
+                    "outcome": "System proceeds with notifying organizer and business",
+                    "status": "Payment successful"
+                }
+            },
+            {
+                "name": "Payment Failure",
+                "description": "Verify that the system correctly identifies a failed payment and does not proceed further.",
+                "input": {
+                    "deductionStatus": "failed"
+                },
+                "expected": {
+                    "outcome": "System halts further actions and marks payment as failed",
+                    "status": "Payment failed"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Send Partial Payment to Business",
+            "scenario": "The system sends a partial payment to the business after a successful deduction.",
+            "actors": "System",
+            "preconditions": "The full amount has been successfully deducted from the organizer’s account.",
+            "steps": [
+                "System calculates the partial amount for the business.",
+                "System transfers the partial payment to the business."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Partial Payment Transfer",
+                "description": "Verify that the system successfully transfers the partial payment to the business.",
+                "input": {
+                    "partialAmount": 500,
+                    "businessAccountStatus": "active"
+                },
+                "expected": {
+                    "outcome": "Partial payment successfully transferred to business",
+                    "status": "Transfer successful"
+                }
+            },
+            {
+                "name": "Partial Payment Transfer Failure",
+                "description": "Verify that the system displays an error if the partial payment transfer to the business fails.",
+                "input": {
+                    "partialAmount": 500,
+                    "businessAccountStatus": "inactive"
+                },
+                "expected": {
+                    "outcome": "System displays 'Transfer to business failed' message",
+                    "status": "Transfer failed"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Notify Event Organizer and Business",
+            "scenario": "The system notifies both the event organizer and business about the successful payment and partial transfer.",
+            "actors": "System",
+            "preconditions": "The partial payment has been successfully transferred to the business.",
+            "steps": [
+                "System sends a notification to the organizer and business confirming the successful payment and partial transfer."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Notification Sent Successfully",
+                "description": "Verify that the system successfully sends notifications to both the organizer and the business.",
+                "input": {
+                    "notificationStatus": "sent"
+                },
+                "expected": {
+                    "outcome": "Organizer and business receive confirmation notifications",
+                    "status": "Notification successful"
+                }
+            },
+            {
+                "name": "Notification Failure",
+                "description": "Verify that the system handles notification failure and informs the administrator.",
+                "input": {
+                    "notificationStatus": "failed"
+                },
+                "expected": {
+                    "outcome": "System logs 'Notification failed' and informs administrator",
+                    "status": "Notification not sent"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Attempt Co-organizer Removal",
+            "scenario": "An organizer attempts to remove a co-organizer from the event.",
+            "actors": "Event Organizer",
+            "preconditions": "The event organizer is logged in and has access to event management functions.",
+            "steps": [
+                "Organizer initiates the removal of a co-organizer.",
+                "System checks the privileges of the user attempting removal."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Privilege Check for Organizer",
+                "description": "Verify that the system recognizes the user as an organizer and allows further steps for co-organizer removal.",
+                "input": {
+                    "userRole": "Organizer"
+                },
+                "expected": {
+                    "outcome": "User privilege confirmed, proceed with co-organizer removal",
+                    "status": "Privilege check successful"
+                }
+            },
+            {
+                "name": "Failed Privilege Check for Co-organizer",
+                "description": "Verify that the system prevents co-organizers from removing other co-organizers.",
+                "input": {
+                    "userRole": "Co-organizer"
+                },
+                "expected": {
+                    "outcome": "System displays 'Insufficient privileges to remove co-organizer' message",
+                    "status": "Privilege check failed"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Fetch Event Information",
+            "scenario": "The system fetches event information to display details and the list of organizers for confirmation.",
+            "actors": "System",
+            "preconditions": "The user attempting removal has the required privileges.",
+            "steps": [
+                "System fetches event information.",
+                "System displays event details, including the list of organizers and co-organizers."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Event Information Fetched Successfully",
+                "description": "Verify that the system successfully fetches and displays event information and organizer details.",
+                "input": {
+                    "eventID": "E123"
+                },
+                "expected": {
+                    "outcome": "Event information displayed, including list of organizers",
+                    "status": "Event information fetched"
+                }
+            },
+            {
+                "name": "Event Information Fetch Failure",
+                "description": "Verify that the system displays an error if it fails to fetch event information.",
+                "input": {
+                    "eventID": "InvalidID"
+                },
+                "expected": {
+                    "outcome": "System displays 'Failed to fetch event information' message",
+                    "status": "Fetch failed"
+                }
+            }
+        ]
+    },
+    {
+        "usecase": {
+            "name": "Remove Selected Co-organizer",
+            "scenario": "The organizer selects a co-organizer to remove from the event.",
+            "actors": "Event Organizer",
+            "preconditions": "Event information has been fetched, and the list of organizers is displayed.",
+            "steps": [
+                "Organizer selects the co-organizer for removal.",
+                "System removes the selected co-organizer from the event."
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Successful Co-organizer Removal",
+                "description": "Verify that the system successfully removes the selected co-organizer from the event.",
+                "input": {
+                    "selectedCoOrganizer": "CoOrganizer123",
+                    "confirmation": true
+                },
+                "expected": {
+                    "outcome": "Co-organizer removed successfully",
+                    "status": "Removal successful"
+                }
+            },
+            {
+                "name": "Removal Cancellation by Organizer",
+                "description": "Verify that the system cancels the removal if the organizer decides not to proceed.",
+                "input": {
+                    "selectedCoOrganizer": "CoOrganizer123",
+                    "confirmation": false
+                },
+                "expected": {
+                    "outcome": "Co-organizer removal cancelled",
+                    "status": "Removal cancelled"
+                }
+            },
+            {
+                "name": "Attempt to Remove Non-existent Co-organizer",
+                "description": "Verify that the system displays an error if the organizer tries to remove a co-organizer not listed for the event.",
+                "input": {
+                    "selectedCoOrganizer": "InvalidCoOrganizer",
+                    "confirmation": true
+                },
+                "expected": {
+                    "outcome": "System displays 'Co-organizer not found' message",
+                    "status": "Removal failed"
+                }
+            }
+        ]
+    }
+]
